@@ -8,22 +8,33 @@ class ChewieControllerFactory {
 
   static VideoHandlerAdapter create({
     required String videoUrl,
+    required double aspectRatio,
+    required bool fullScreen,
+    required bool looping,
+    required bool showControls,
+    required bool showOptions,
+    required bool allowFullScreen,
+    required bool allowMuting,
+    required bool autoPlay,
   }) {
-    return ChewieAdapterImpl(
-      chewieController: ChewieController(
-        videoPlayerController: VideoPlayerController.networkUrl(
-          Uri.parse(
-            videoUrl,
-          ),
+    final ChewieController chewieController = ChewieController(
+      videoPlayerController: VideoPlayerController.networkUrl(
+        Uri.parse(
+          videoUrl,
         ),
-        aspectRatio: 3 / 2,
-        autoPlay: true,
-        looping: true,
-        showControls: true,
-        showOptions: true,
-        allowFullScreen: true,
-        allowMuting: true,
       ),
+      aspectRatio: aspectRatio,
+      autoPlay: autoPlay,
+      looping: looping,
+      showControls: showControls,
+      showOptions: showOptions,
+      allowFullScreen: allowFullScreen,
+      allowMuting: allowMuting,
+      fullScreenByDefault: fullScreen,
+    );
+
+    return ChewieAdapterImpl(
+      chewieController: chewieController,
     );
   }
 }

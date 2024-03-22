@@ -9,17 +9,6 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-  late VideoViewerController _meuVideoController;
-
-  @override
-  void initState() {
-    super.initState();
-    _meuVideoController = VideoViewerControllerImpl(
-      videoUrl:
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,10 +18,15 @@ class _VideoScreenState extends State<VideoScreen> {
       ),
       backgroundColor: Colors.white,
       body: Center(
-        child: SizedBox(
-          height: 200,
-          width: double.infinity,
-          child: _meuVideoController.videoPlayer,
+        child: ElevatedButton(
+          child: const Text('Play Video'),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const VideoPage(),
+                ));
+          },
         ),
       ),
     ));

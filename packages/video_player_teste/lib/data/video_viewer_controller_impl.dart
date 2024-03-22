@@ -8,8 +8,24 @@ class VideoViewerControllerImpl extends VideoViewerController {
 
   VideoViewerControllerImpl({
     required String videoUrl,
+    double aspectRatio = 16 / 9,
+    bool fullScreen = false,
+    bool looping = false,
+    bool showControls = true,
+    bool showOptions = true,
+    bool allowFullScreen = true,
+    bool allowMuting = true,
+    bool autoPlay = true,
   }) : videoHandlerAdapter = ChewieControllerFactory.create(
           videoUrl: videoUrl,
+          aspectRatio: aspectRatio,
+          fullScreen: fullScreen,
+          allowMuting: allowMuting,
+          allowFullScreen: allowFullScreen,
+          autoPlay: autoPlay,
+          looping: looping,
+          showControls: showControls,
+          showOptions: showOptions,
         );
 
   @override
